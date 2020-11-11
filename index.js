@@ -21,21 +21,18 @@ client.once('ready', () => {
 	console.log(`Bot Carregado!`);
 });
 
-
-
 client.on('message', message => {
 
 	if (message.channel.type === 'text') {
-		return console.log(chalk.yellowBright('[LOG CONVERSA]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
+		console.log(chalk.yellowBright('[LOG CONVERSA]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
 	} else if (message.channel.type === 'dm' && message.author.id !== idbot && message.content.startsWith(prefix)) { //esse id é o id do bot!
 		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content}`)
-		message.reply('Não posso executar esse comando dentro dos DMs!') 
+		return message.reply('Não posso executar esse comando dentro dos DMs!') 
 	} else if (message.channel.type === 'dm' && message.author.id !== idbot) {
 		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content}`)
 	}
 
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-	
+	if (!message.content.startsWith(prefix) || message.author.bot) return;	
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
@@ -48,17 +45,12 @@ client.on('message', message => {
 	if (command.dono && message.author.id !== dono)
 		return message.channel.send(`Você não é uma pessoa especial, ${message.author}`);
 	
-	/*if (command.guildOnly && message.channel.type === 'dm') {
-		return message.reply('Não posso executar esse comando dentro dos DMs!');
-	}*/
-	
 	if (command.args && !args.length) {
-		let reply = `Não forneceu nenhum argumento, ${message.author}!`;
+		let reply = `Você não forneceu nenhum argumento, ${message.author}!`;
 
 		if (command.usage) {
 			reply += `\nO uso adequado do comando é: \`${prefix}${command.name} ${command.usage}\``;
 		}
-
 		return message.channel.send(reply);
 	}
 

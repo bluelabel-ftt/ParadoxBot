@@ -6,12 +6,13 @@ module.exports = {
     guildOnly: true,
     usage: '[membro] [razao]',
     execute(message, args) {
+
         let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if (membro === message.member) {
             return message.reply(`Você nao pode mutar você mesmo.`)
         }
 
-        if (!motivo) return message.reply(`Escreva o motivo! ex.: \`\`${prefix}mute @membro [motivo]\`\``);
+        if (!args) return message.reply(`Escreva o motivo! ex.: \`\`${prefix}mute @membro [motivo]\`\``);
         if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`Você precisa da permissao **Mutar Membros**.`);
         if (membro.hasPermission("MUTE_MEMBERS")) return message.reply(`Não posso mutar esse membro pois ele possui a permissão: \`**Mutar Membros**\``);
         
@@ -24,8 +25,8 @@ module.exports = {
      
             coletor.on("collect", cp => {
                 cp.remove(message.author.id);
-                message.channel.send(`\`\`\`diff\n- MEMBRO MUTADO\n- Motivo: ${motivo}\`\`\``)
-            
+                message.channel.send(`\`\`\`diff\n- MEMBRO MUTADO\n- Motivo: ${args}\`\`\``)
+//                message.cache.send('teste')     
             })
         })
     },
