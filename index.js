@@ -24,12 +24,12 @@ client.once('ready', () => {
 client.on('message', message => {
 
 	if (message.channel.type === 'text') {
-		console.log(chalk.yellowBright('[LOG CONVERSA]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
+		console.log(chalk.yellowBright('[LOG CONVERSA]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content} |`);
 	} else if (message.channel.type === 'dm' && message.author.id !== idbot && message.content.startsWith(prefix)) { //esse id é o id do bot!
-		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content}`)
+		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content} |`)
 		return message.reply('Não posso executar esse comando dentro dos DMs!') 
 	} else if (message.channel.type === 'dm' && message.author.id !== idbot) {
-		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content}`)
+		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content} |`)
 	}
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;	

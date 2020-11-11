@@ -6,7 +6,7 @@ module.exports = {
     usage: '[frase]',
     execute(message, args) {
         if (!args.length) return message.channel.send(`Você não colocou nada para o bot assistir, ${message.author}!`);
-        const commandName = args.toString().replace(",", " ");
+        const commandName = args.join(' ')
         /*const command = message.client.commands.get(commandName)
             || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));*/
         message.client.user.setActivity(`${commandName}`, { type: 'WATCHING' });

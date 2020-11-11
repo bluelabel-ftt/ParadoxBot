@@ -6,6 +6,7 @@ module.exports = {
     guildOnly: true,
     usage: '[membro] [razao]',
     execute(message, args) {
+        const role = message.guild.roles.cache.find(role => role.name === "mutadoparadox");
 
         let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if (membro === message.member) {
@@ -26,7 +27,8 @@ module.exports = {
             coletor.on("collect", cp => {
                 cp.remove(message.author.id);
                 message.channel.send(`\`\`\`diff\n- MEMBRO MUTADO\n- Motivo: ${args}\`\`\``)
-//                message.cache.send('teste')     
+                message.guild.channels.cache.forEach(channel => {channel.createOverwrite(role, {SEND_MESSAGES: false, SPEAK: false})});
+                membro.roles.add(role);   
             })
         })
     },

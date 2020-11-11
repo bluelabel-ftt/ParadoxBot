@@ -5,7 +5,9 @@ module.exports = {
     dono: true,
     usage: '[online, idle, dnd, invisible]',
     execute(message, args) {
-        if (!args.length) return message.channel.send(`Você não colocou nenhum status, ${message.author}!`);
+        if (!args.length) {
+            message.channel.send(`Você não colocou nenhum status, ${message.author}!`)
+        }
         const commandName = args[0].toLowerCase();
         const command = message.client.commands.get(commandName)
             || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
