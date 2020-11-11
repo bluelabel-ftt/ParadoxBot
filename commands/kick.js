@@ -5,6 +5,7 @@ module.exports = {
     description: 'Kicka um usuario',
     args: true,
     guildOnly: true,
+    usage: '[membro] [razao]',
     execute(message, args) {
         let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         //if (!membro) return message.reply(`Mencione um usuario! ex.: \`\`${prefix}ban @membro [motivo]\`\``)
