@@ -6,7 +6,7 @@ module.exports = {
     args: true,
     guildOnly: true,
     execute(message, args) {
-        let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
+        let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         //if (!membro) return message.reply(`Mencione um usuario! ex.: \`\`${prefix}ban @membro [motivo]\`\``)
         if (membro === message.member) return message.reply(`Você nao pode kickar você mesmo.`)
      

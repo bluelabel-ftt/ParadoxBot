@@ -25,9 +25,12 @@ client.once('ready', () => {
 
 client.on('message', message => {
 
-	/*if (message.channel.type === 'text') {
-		return console.log(chalk.yellowBright('[LOG COMANDO]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
-	};*/
+	if (message.channel.type === 'text') {
+		return console.log(chalk.yellowBright('[LOG CONVERSA]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
+	} else if (message.channel.type === 'dm' && message.author.id !== '764833394701762560') { //esse id é o id do bot!
+		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content}`)
+		message.reply('Não posso executar esse comando dentro dos DMs!') 
+	};
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	
@@ -43,9 +46,9 @@ client.on('message', message => {
 	if (command.dono && message.author.id !== dono)
 		return message.channel.send(`Você não é uma pessoa especial, ${message.author}`);
 	
-	if (command.guildOnly && message.channel.type === 'dm') {
+	/*if (command.guildOnly && message.channel.type === 'dm') {
 		return message.reply('Não posso executar esse comando dentro dos DMs!');
-	}
+	}*/
 	
 	if (command.args && !args.length) {
 		let reply = `Não forneceu nenhum argumento, ${message.author}!`;
@@ -56,8 +59,6 @@ client.on('message', message => {
 		
 		return message.channel.send(reply);
 	}
-
-	//console.log(chalk.yellowBright('[LOG COMANDO]'), `Server: '${message.guild.name}' | Canal: '${message.channel.name}' | Usuário ${message.author.tag}: ${message.content}`);
 	
 	if (!cooldowns.has(command.name)) {
 		cooldowns.set(command.name, new Discord.Collection());
@@ -86,7 +87,4 @@ client.on('message', message => {
 	}
 
 	});
-
-	//console.log(chalk.greenBright('[LOG MENSAGEM]'), `[Server: '${client.message.guild.name}' | Canal: '${client.message.channel.name}' | Usuário ${client.message.author.username}#${client.message.author.discriminator}: ${client.message.content}]`);
-//console.log(chalk.greenBright('[LOG MENSAGEM]'), `[Server: '${client.message.guild.name}' | Canal: '${client.message.channel.name}' | Usuário ${client.message.author.username}#${client.message.author.discriminator}: ${client.message.content}]`);
 client.login(token);
