@@ -20,7 +20,6 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log(`Bot Carregado!`);
 });
-client.on
 
 
 
