@@ -12,7 +12,7 @@ module.exports = {
 			const { commands } = message.client;
 		if (!args.length) {
 			const title = 'Aqui está uma lista de todos os meus comandos:';
-			const description = data.push(commands.map(command => command.name).join(', '));
+			const description = data.push(commands.map(command => command.name).join('\n '));
 			const footer = `Você pode enviar ${prefix}help [nome do comando] para obter informações sobre um comando específico!`;
 				const helpEmbed = new Discord.MessageEmbed()
 				.setColor('RANDOM')

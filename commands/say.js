@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['dizer'],
     usage: '[frase]',
     args: true,
+    guildOnly: true,
     execute(message, args) {
 
         const mChannel = message.mentions.channels.first()
