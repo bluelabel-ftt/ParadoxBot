@@ -3,7 +3,7 @@ module.exports = {
 	name: 'configcargos',
     description: 'Muta um usuario',
     guildOnly: true,
-    execute(message, args) {
+    execute(message) {
         if(!message.guild.roles.cache.find(a => a.name === "mutadoparadox")){
             message.guild.roles.create({ data: {name: 'mutadoparadox', color: 'BLACK', mentionable: 'false'}})
             //message.guild.channels.cache.forEach(channel => {channel.createOverwrite(role, {SEND_MESSAGES: false, SPEAK: false})});
