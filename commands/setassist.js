@@ -10,5 +10,6 @@ module.exports = {
         /*const command = message.client.commands.get(commandName)
             || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));*/
         message.client.user.setActivity(`${commandName}`, { type: 'WATCHING' });
+        message.reply(`agora estou assistindo ${commandName }`)
     }
 }

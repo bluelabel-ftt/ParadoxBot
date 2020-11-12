@@ -8,11 +8,11 @@ module.exports = {
     execute(message, args) {
         const amount = parseInt(args[0]) + 1;
 		if (isNaN(amount)) {
-			return message.reply('Não parece ser um número válido.');
+			return message.reply('não parece ser um número válido.');
 		} else if (amount <= 1 || amount > 100) {
-			return message.reply('É necessário colocar um número entre 1 e 99.');
+			return message.reply('é necessário colocar um número entre 1 e 99.');
 		} else if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-			return message.reply(`Você precisa da permissão **Gerenciar Mensagens**`)
+			return message.reply(`você precisa da permissão **Gerenciar Mensagens**`)
 		}
 		message.channel.bulkDelete(amount, true).catch(err => {
 			console.error(err);

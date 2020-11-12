@@ -1,4 +1,3 @@
-const { prefix } = require('../config.json');
 module.exports = {
 	name: 'configcargos',
     description: 'Muta um usuario',

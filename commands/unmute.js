@@ -7,14 +7,14 @@ module.exports = {
     usage: '[membro]',
     execute(message) {
         let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
-        if (membro === message.member) return message.reply(`Você não pode mutar você mesmo.`)
+        if (membro === message.member) return message.reply(`você não pode mutar você mesmo.`)
 
-        if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`Você precisa da permissão **Mutar Membros**.`)
-        if (membro.hasPermission("MUTE_MEMBERS")) return message.reply(`Não posso desmutar esse membro pois ele possui a permissão: \`**Mutar Membros**\`, afinal como que mutaram ele?`)
+        if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`você precisa da permissão **Mutar Membros**.`)
+        if (membro.hasPermission("MUTE_MEMBERS")) return message.reply(`não posso desmutar esse membro pois ele possui a permissão: \`**Mutar Membros**\`, afinal como que mutaram ele?`)
 // colocar aqui sistema de criar cargo
 
         if(!message.guild.roles.cache.find(a => a.name === "mutadoparadox")){     
-            return message.reply(`Para que consiga mutar mebros você precisa configurar cargos com \`${prefix}configcargos\``)
+            return message.reply(`para que consiga mutar mebros você precisa configurar cargos com \`${prefix}configcargos\``)
         }
 
         const cargo = message.guild.roles.cache.find(a => a.name === "mutadoparadox")
@@ -24,7 +24,7 @@ module.exports = {
             return message.reply(`este membro não está mutado.`)
         }
 //=======================================================================================================
-        message.reply(`Você realmente deseja desmutar esse usuário?`).then(msg => {
+        message.reply(`você realmente deseja desmutar esse usuário?`).then(msg => {
             msg.react("✅")
      
             let filtro = (reaction, usuario) => reaction.emoji.name === "✅" && usuario.id === message.author.id;

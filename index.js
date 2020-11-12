@@ -19,6 +19,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log(`Bot Carregado!`);
+	client.user.setActivity(`paradox no topo`, { type: 'WATCHING' });
 });
 
 client.on('message', message => {
@@ -31,6 +32,7 @@ client.on('message', message => {
 	} else if (message.channel.type === 'dm' && message.author.id !== idbot) {
 		console.log(chalk.greenBright('[LOG PV]'), `Usuário ${message.author.tag}: ${message.content} |`)
 	}
+
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;	
 

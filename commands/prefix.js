@@ -8,6 +8,6 @@ module.exports = {
 	usage: '[command]',
 	cooldown: 5,
 	execute(message, args) {
-            message.reply(`Você pode usar \`${prefix}\` como meu prefix`);
+            message.reply(`você pode usar \`${prefix}\` como meu prefix`);
     }
 }

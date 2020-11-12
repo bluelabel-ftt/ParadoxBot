@@ -24,11 +24,11 @@ module.exports = {
 			return message.author.send(helpEmbed)
 			   .then(() => {
 				   if (message.channel.type === 'dm') return;
-				   message.reply('Enviei um DM com todos os meus comandos!');
+				   message.reply('enviei um DM com todos os meus comandos!');
 			   })
 			   .catch(error => {
 				console.error(`Não foi possível enviar DM para ${message.author.tag}.\n`, error);
-				message.reply('Parece que não posso mandar DM para você!');
+				message.reply('parece que não posso mandar DM para você!');
 			});
 			}
 

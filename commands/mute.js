@@ -7,13 +7,13 @@ module.exports = {
     usage: '[membro] [razao]',
     execute(message, args) {
         let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
-        if (membro === message.member) return message.reply(`Você não pode mutar você mesmo.`)
+        if (membro === message.member) return message.reply(`você não pode mutar você mesmo.`)
 
         const motivo = args.slice(1).join(" ");
 
-        if (!motivo) return message.reply(`Escreva o motivo! ex.: \`\`${prefix}mute @membro [motivo]\`\``)
-        if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`Você precisa da permissão **Mutar Membros**.`)
-        if (membro.hasPermission("MUTE_MEMBERS")) return message.reply(`Não posso mutar esse membro pois ele possui a permissão: \`**Mutar Membros**\``)
+        if (!motivo) return message.reply(`escreva o motivo! ex.: \`\`${prefix}mute @membro [motivo]\`\``)
+        if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`você precisa da permissão **Mutar Membros**.`)
+        if (membro.hasPermission("MUTE_MEMBERS")) return message.reply(`não posso mutar esse membro pois ele possui a permissão: \`**Mutar Membros**\``)
 // colocar aqui sistema de criar cargo
 
         if(membro.id === dono) {
@@ -21,7 +21,7 @@ module.exports = {
         }
 
         if(!message.guild.roles.cache.find(a => a.name === "mutadoparadox")){     
-            return message.reply(`Para que consiga mutar mebros você precisa configurar cargos com \`${prefix}configcargos\``)
+            return message.reply(`para que consiga mutar mebros você precisa configurar cargos com \`${prefix}configcargos\``)
         }
 
 
@@ -37,7 +37,7 @@ module.exports = {
            // message.guild.channels.cache.forEach(channel => {channel.createOverwrite(message.guide.id, {SEND_MESSAGES: false, SPEAK: false})});
 
 //=======================================================================================================
-        message.reply(`Você realmente deseja mutar esse usuário?`).then(msg => {
+        message.reply(`você realmente deseja mutar esse usuário?`).then(msg => {
             msg.react("✅")
      
             let filtro = (reaction, usuario) => reaction.emoji.name === "✅" && usuario.id === message.author.id;

@@ -12,7 +12,8 @@ module.exports = {
         const command = message.client.commands.get(commandName)
             || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         if (commandName === 'online' || commandName === 'idle' || commandName === 'dnd' || commandName === 'invisible') {
-            return message.client.user.setStatus(`${args}`) && message.channel.send(`Status setado como **${args}**`);
+            message.client.user.setStatus(`${args}`)
+            message.channel.send(`Status setado como **${args}**`);
         } else return message.channel.send(`Status Invalido`)
     }
 }
