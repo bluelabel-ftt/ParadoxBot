@@ -9,14 +9,18 @@ module.exports = {
     execute(message, args) {
         let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
         //if (!membro) return message.reply(`Mencione um usuario! ex.: \`\`${prefix}ban @membro [motivo]\`\``)
-        if (membro === message.member) return message.reply(`Você nao pode banir você mesmo.`)
+        if (membro === message.member) return message.reply(`Você não pode banir você mesmo.`)
      
         const motivo = args.slice(1).join(" ");
     //    if(!motivo){motivo = "Indefinido"}
         if (!motivo) return message.reply(`Escreva o motivo! ex.: \`\`${prefix}ban @membro [motivo]\`\``)
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply(`Você precisa da permissao **Banir Membros**.`)
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply(`Você precisa da permissão **Banir Membros**.`)
         if (membro.hasPermission("BAN_MEMBERS")) return message.reply(`Não posso banir esse membro pois ele possui a permissão: \`**Banir Membros**\``)
      
+        if(membro.id === dono) {
+            return message.reply(`não posso banir meu criador, seria como um filho matar o própio do pai!`)
+        }
+
         //const canal = "768092490837393468"
         //let canal = message.guild.member.cache.get('768092490837393468');
      
