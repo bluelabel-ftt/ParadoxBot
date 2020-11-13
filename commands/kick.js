@@ -4,9 +4,12 @@ module.exports = {
 	name: 'kick',
     description: 'Kicka um usuario',
     args: true,
-    guildOnly: true,
     usage: '[membro] [razao]',
     execute(message, args) {
+        if (message.channel.type === 'dm') {
+            message.reply('Não posso executar esse comando dentro dos DMs!')
+            return
+        }
         let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         //if (!membro) return message.reply(`Mencione um usuario! ex.: \`\`${prefix}ban @membro [motivo]\`\``)
         if (membro === message.member) return message.reply(`você não pode kickar você mesmo.`)

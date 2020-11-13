@@ -6,10 +6,12 @@ module.exports = {
     aliases: ['dizer'],
     usage: '[frase]',
     args: true,
-    guildOnly: true,
     execute(message, args) {
-
-        const mChannel = message.mentions.channels.first()
+      if (message.channel.type === 'dm') {
+        message.reply('Não posso executar esse comando dentro dos DMs!')
+        return
+      }
+      const mChannel = message.mentions.channels.first()
     
         message.delete()
         if (mChannel) {

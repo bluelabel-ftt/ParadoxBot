@@ -4,8 +4,11 @@ module.exports = {
     cooldown: 3,
 	aliases: ['limpar', 'apagar'],
 	usage: '[1 a 99]',
-	guildOnly: true,
     execute(message, args) {
+		if (message.channel.type === 'dm') {
+            message.reply('Não posso executar esse comando dentro dos DMs!')
+            return
+        }
         const amount = parseInt(args[0]) + 1;
 		if (isNaN(amount)) {
 			return message.reply('não parece ser um número válido.');

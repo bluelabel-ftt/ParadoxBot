@@ -3,9 +3,12 @@ module.exports = {
 	name: 'unmute',
     description: 'Desmuta um usuario',
     args: true,
-    guildOnly: true,
     usage: '[membro]',
     execute(message) {
+        if (message.channel.type === 'dm') {
+            message.reply('Não posso executar esse comando dentro dos DMs!')
+            return
+        }
         let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
         if (membro === message.member) return message.reply(`você não pode mutar você mesmo.`)
 
