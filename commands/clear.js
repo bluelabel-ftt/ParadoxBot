@@ -3,6 +3,7 @@ module.exports = {
     description: 'Limpa de 1 a 99 Mensagens em um Canal Expecifico',
     cooldown: 3,
 	aliases: ['limpar', 'apagar'],
+	args: true,
 	usage: '[1 a 99]',
     execute(message, args) {
 		if (message.channel.type === 'dm') {
