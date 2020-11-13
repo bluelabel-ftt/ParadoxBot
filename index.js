@@ -18,7 +18,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-	console.log(`Bot Carregado!`);
+	console.log(`Bot Carregado, estou online!`);
 	client.user.setActivity(`paradox no topo`, { type: 'WATCHING' });
 });
 
