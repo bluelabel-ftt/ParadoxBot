@@ -9,7 +9,7 @@ module.exports = {
             message.reply('Não posso executar esse comando dentro dos DMs!')
             return
         }
-        let membro = message.mentions.members.first() || mesage.guild.members.cache.get(args[0])
+        let membro = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if (membro === message.member) return message.reply(`você não pode mutar você mesmo.`)
 
         if (!message.member.hasPermission("MUTE_MEMBERS")) return message.reply(`você precisa da permissão **Mutar Membros**.`)
